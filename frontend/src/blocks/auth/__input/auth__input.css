@@ -1,0 +1,10 @@
+.auth__input {
+    font-family: "Inter", "Arial", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+
+    color: #FFFFFF;
+    border-bottom: 2px solid #CCCCCC;;
+}

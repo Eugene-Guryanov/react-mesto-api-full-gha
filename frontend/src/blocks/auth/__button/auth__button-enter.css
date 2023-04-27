@@ -1,0 +1,14 @@
+.auth__button-enter {
+    font-family: "Inter", "Arial", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+
+    text-align: center;
+
+    color: #FFFFFF;
+    margin-top: 15px;
+    text-decoration: none;
+}

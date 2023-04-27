@@ -1,0 +1,28 @@
+.popup__exit {
+  background-image: url(../../../img/Close-Icon.svg);
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 0;
+  background-position: center;
+  cursor: pointer;
+  position: absolute;
+  top: -36px;
+  right: 0;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  background-size: cover;
+}
+
+.popup__exit:hover {
+  opacity: 0.6;
+}
+
+@media screen and (min-width: 1024px) {
+  .popup__exit {
+    width: 32px;
+    height: 32px;
+    top: -40px;
+    right: -40px;
+  }
+}
