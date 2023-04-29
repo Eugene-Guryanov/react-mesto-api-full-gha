@@ -13,6 +13,7 @@
 
   getUser(){
     return fetch(`${this._baseUrl}/users/me`, {
+      credentials: 'include',
       headers: this._headers
     }).then(this._checkResponse)
   }
@@ -25,6 +26,7 @@
 
   setUserInfo(data) {
     return fetch(`${this._baseUrl}/users/me`, {
+      credentials: 'include',
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
@@ -36,6 +38,7 @@
 
   newCard(data) {
     return fetch(`${this._baseUrl}/cards`, {
+      credentials: 'include',
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
@@ -47,6 +50,7 @@
 
   setAvatar(avatar){
     return fetch(`${this._baseUrl}/users/me/avatar`, {
+      credentials: 'include',
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify(
@@ -57,6 +61,7 @@
 
   deleteCard(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
+      credentials: 'include',
       method: 'DELETE',
       headers: this._headers
     }).then(this._checkResponse)
@@ -64,6 +69,7 @@
 
   changeLikeCardStatus(id, isLiked) {
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
+      credentials: 'include',
       method: `${isLiked ? 'PUT' : 'DELETE'}`,
       headers: this._headers,
     }).then(this._checkResponse);
@@ -71,7 +77,8 @@
   }
 
   const api = new Api({
-    baseUrl: 'https://api.project.nomoredomains.monster',
+  //  baseUrl: 'https://api.project.nomoredomains.monster',
+    baseUrl: 'http://localhost:3000',
     headers: {
       'Content-Type': 'application/json',
     },

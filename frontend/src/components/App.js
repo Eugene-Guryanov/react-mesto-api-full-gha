@@ -176,7 +176,7 @@ function App() {
   }, []);
 
   function tokenCheck() {
-    const jwt = localStorage.getItem('jwt');
+    const jwt = localStorage.getItem('userId');
 
     if (jwt) {
       Auth
@@ -193,7 +193,7 @@ function App() {
   }
 
   function onSignOut() {
-    localStorage.removeItem('jwt');
+    localStorage.removeItem('userId');
     setLoggedIn(false);
   }
 
