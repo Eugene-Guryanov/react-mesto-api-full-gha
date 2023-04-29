@@ -71,7 +71,7 @@
   }
 
   const api = new Api({
-    baseUrl: 'https://api.project.nomoredomains.monster/',
+    baseUrl: 'https://api.project.nomoredomains.monster',
     headers: {
       'Content-Type': 'application/json',
     },
