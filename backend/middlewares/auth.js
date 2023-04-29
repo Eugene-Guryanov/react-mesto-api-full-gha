@@ -5,8 +5,7 @@ const { NODE_ENV, JWT_SECRET } = process.env;
 
 // eslint-disable-next-line consistent-return
 module.exports.auth = (req, res, next) => {
-  const authorization = req.cookies.jwt;
-  const token = authorization.split('Bearer ')[1];
+  const token = req.cookies.jwt;
   let payload;
 
   try {
