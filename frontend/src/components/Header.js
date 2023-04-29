@@ -8,13 +8,13 @@ function Header(props) {
     {props.loggedIn ?
       (<div className="header__container">
         <Link className="header__email" to="/">{props.email}</Link>
-        <Link className="header__button" onClick={props.onSignOut} to="/sign-in" >Выйти</Link>
+        <Link className="header__button" onClick={props.onSignOut} to="/signin" >Выйти</Link>
       </div>)
       : (<>{
-        location.pathname === '/sign-up' ? (<div className="header__container">
-          <Link className="header__button" to="/sign-in">Войти</Link>
+        location.pathname === '/signup' ? (<div className="header__container">
+          <Link className="header__button" to="/signin">Войти</Link>
         </div>) : (<div className="header__container">
-          <Link className="header__button" to="/sign-up">Регистрация</Link>
+          <Link className="header__button" to="/signup">Регистрация</Link>
         </div>)
       }
       </>)
