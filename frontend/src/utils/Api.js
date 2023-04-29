@@ -71,11 +71,11 @@
   }
 
   const api = new Api({
-    baseUrl: 'http://localgost:3000/',
-   headers: {
-     authorization: 'e8a00538-06eb-4bf4-9ee5-2d02ccb49463',
-      'Content-Type': 'application/json'
-    }
+    baseUrl: 'https://api.project.nomoredomains.monster',
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json',
+    },
   });
 
   export default api
