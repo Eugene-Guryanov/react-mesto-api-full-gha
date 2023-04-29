@@ -18,7 +18,7 @@ const NotFoundError = require('./errors/NotFoundError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const app = express();
-app.use(cors({ origin: ['http://localhost:3000', 'https://project.nomoredomains.monster'], credentials: true, maxAge: 3600 }));
+app.use(cors({ origin: ['http://localhost:3000', 'https://localhost:3000', 'https://project.nomoredomains.monster'], credentials: true, maxAge: 3600 }));
 const { PORT = 3000 } = process.env;
 
 app.use(bodyParser.json());

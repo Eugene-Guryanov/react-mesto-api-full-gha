@@ -9,7 +9,7 @@ module.exports.createCard = (req, res, next) => {
   const { name, link } = req.body;
 
   Card.create({ name, link, owner })
-    .then((card) => res.send({ data: card }))
+    .then((card) => res.send(card))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequestError('Ошибка валидации'));
@@ -22,7 +22,7 @@ module.exports.createCard = (req, res, next) => {
 module.exports.getCard = (req, res, next) => {
   Card.find({})
     .populate('owner')
-    .then((card) => res.send({ data: card }))
+    .then((card) => res.send(card))
     .catch(next);
 };
 
