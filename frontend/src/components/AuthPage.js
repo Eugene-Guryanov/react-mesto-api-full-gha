@@ -17,7 +17,7 @@ function authPage({
                 {children}
                 <button className="auth__button">{btnText}</button>
                 {formName === 'register' && (
-                    <Link className="auth__button-enter" to="/sign-in">Уже зарегистрированы? Войти</Link>
+                    <Link className="auth__button-enter" to="/signin">Уже зарегистрированы? Войти</Link>
                 )}
             </form>
         </div>

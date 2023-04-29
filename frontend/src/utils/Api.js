@@ -71,7 +71,7 @@
   }
 
   const api = new Api({
-    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-57',
+    baseUrl: 'http://localgost:3000/',
    headers: {
      authorization: 'e8a00538-06eb-4bf4-9ee5-2d02ccb49463',
       'Content-Type': 'application/json'

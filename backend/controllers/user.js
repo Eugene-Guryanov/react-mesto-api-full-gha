@@ -105,7 +105,7 @@ module.exports.login = (req, res, next) => {
         httpOnly: true,
         sameSite: true, // добавили опцию
       })
-        .send({ message: 'Всё верно!' });
+        .send({ token });
     })
     .catch(next);
 };

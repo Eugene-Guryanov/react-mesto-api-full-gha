@@ -138,7 +138,7 @@ function App() {
           img: ban,
           title: 'Что-то пошло не так! Попробуйте еще раз.',
 
-        }, navigate('/sign-up'))
+        }, navigate('/signup'))
       )
       .finally(() => {
         setInfoTooltip(true);
@@ -216,13 +216,13 @@ function App() {
             cards={cards}
           />} />
 
-          <Route path="/sign-up" element={<Register
+          <Route path="/signup" element={<Register
             isOpen={isEditProfilePopupOpen}
             onRegister={handleRegister}
           />} />
 
 
-          <Route path="/sign-in" element={<Login isOpen={isEditProfilePopupOpen} onAuth={handleAuth} />} />
+          <Route path="/signin" element={<Login isOpen={isEditProfilePopupOpen} onAuth={handleAuth} />} />
         </Routes>
         <Footer />
 
