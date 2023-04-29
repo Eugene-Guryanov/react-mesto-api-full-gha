@@ -14,14 +14,12 @@
   getUser(){
     return fetch(`${this._baseUrl}/users/me`, {
       credentials: 'include',
-      headers: this._headers
     }).then(this._checkResponse)
   }
 
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       credentials: 'include',
-      headers: this._headers
     }).then(this._checkResponse)
   }
 
@@ -64,7 +62,6 @@
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
       credentials: 'include',
       method: 'DELETE',
-      headers: this._headers
     }).then(this._checkResponse)
   }
 
@@ -75,7 +72,7 @@
       headers: this._headers,
     }).then(this._checkResponse);
   }
-  }
+  };
 
   const api = new Api({
     baseUrl: 'https://api.project.nomoredomains.monster',
