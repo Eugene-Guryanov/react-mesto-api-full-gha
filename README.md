@@ -8,7 +8,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 84.201.173.239
+IP 84.201.173.239
 
 Frontend https://project.nomoredomains.monster
 
