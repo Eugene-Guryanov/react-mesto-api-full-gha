@@ -65,7 +65,7 @@ module.exports.updateUser = (req, res, next) => {
     { new: true, runValidators: true },
   )
     .orFail(() => next(new NotFoundError('Пользователь с таким id не найден')))
-    .then((userData) => res.send({ data: userData }))
+    .then((userData) => res.send(userData))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequestError('Ошибка валидации'));
@@ -83,7 +83,7 @@ module.exports.updateUserAvatar = (req, res, next) => {
     { new: true, runValidators: true },
   )
     .orFail(() => next(new NotFoundError('Пользователь с таким id не найден')))
-    .then((avatarData) => res.send({ data: avatarData }))
+    .then((avatarData) => res.send(avatarData))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequestError('Ошибка валидации'));
