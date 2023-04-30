@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://api.project.nomoredomains.monster';
+export const BASE_URL = 'http://localhost:3000';
 
 const handleResponse = (response) =>
   response.ok ? response.json() : Promise.reject(`Ошибка ${response.status}`);
@@ -33,7 +33,7 @@ export const login = (password, email) => {
     });
 };
 
-export  const checkToken = (token) => {
+export  const checkToken = () => {
   return fetch(`${BASE_URL}/users/me`, {
     method: 'GET',
     credentials: 'include',
