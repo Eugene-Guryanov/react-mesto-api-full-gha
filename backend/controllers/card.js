@@ -21,12 +21,14 @@ module.exports.createCard = (req, res, next) => {
 
 module.exports.getCards = (req, res, next) => {
   Card.find({})
+    .populate(['likes', 'owner'])
     .then((cards) => res.send(cards))
     .catch(next);
 };
 
 module.exports.removeCard = (req, res, next) => {
   Card.findById(req.params.id)
+    .populate(['likes', 'owner'])
     .orFail(() => { throw new NotFoundError('Карточка с таким id не найдена'); })
     .then((card) => {
       if (card.owner._id.toString() === req.user._id) {
@@ -50,6 +52,7 @@ module.exports.likeCard = (req, res, next) => {
     { $addToSet: { likes: req.user._id } }, // добавить _id в массив, если его там нет
     { new: true },
   )
+    .populate(['likes', 'owner'])
     .orFail(() => { throw new NotFoundError('Карточка с таким id не найдена'); })
     .then((likes) => res.send(likes))
     .catch((err) => {
@@ -67,6 +70,7 @@ module.exports.dislikeCard = (req, res, next) => {
     { $pull: { likes: req.user._id } }, // убрать _id из массива
     { new: true },
   )
+    .populate(['likes', 'owner'])
     .orFail(() => { throw new NotFoundError('Карточка с таким id не найдена'); })
     .then((likes) => res.send(likes))
     .catch((err) => {
