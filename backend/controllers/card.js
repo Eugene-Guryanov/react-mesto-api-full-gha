@@ -21,7 +21,7 @@ module.exports.createCard = (req, res, next) => {
 
 module.exports.getCards = (req, res, next) => {
   Card.find({})
-    .populate('owner')
+    .populate(['likes', 'owner'])
     .then((cards) => res.send(cards))
     .catch(next);
 };
@@ -51,7 +51,7 @@ module.exports.likeCard = (req, res, next) => {
     { $addToSet: { likes: req.user._id } }, // добавить _id в массив, если его там нет
     { new: true },
   )
-    .populate('owner')
+    .populate(['likes', 'owner'])
     .orFail(() => { throw new NotFoundError('Карточка с таким id не найдена'); })
     .then((likes) => res.send(likes))
     .catch((err) => {
