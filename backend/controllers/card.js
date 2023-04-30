@@ -29,6 +29,7 @@ module.exports.getCards = (req, res, next) => {
 
 module.exports.removeCard = (req, res, next) => {
   Card.findById(req.params.id)
+    .populate(['likes', 'owner'])
     .orFail(() => { throw new NotFoundError('Карточка с таким id не найдена'); })
     .then((card) => {
       if (card.owner._id.toString() === req.user._id) {
