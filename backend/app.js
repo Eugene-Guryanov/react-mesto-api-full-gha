@@ -5,8 +5,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
-const cors = require('cors');
-require('dotenv').config();
+// const cors = require('cors');
 const mongoose = require('mongoose');
 const userRouter = require('./routes/users');
 const cardRouter = require('./routes/cards');
@@ -19,7 +18,31 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const app = express();
 // app.use(cors({ origin: ['http://localhost:3000', 'http://localhost:3001', 'localhost:3000', 'https://localhost:3000', 'https://project.nomoredomains.monster'], credentials: true, maxAge: 3600 }));
-app.use(cors());
+const allowedCors = [
+  'http://localhost:3001',
+  'project.nomoredomains.monster',
+  'localhost:3000',
+  'https://project.nomoredomains.monster',
+  'http://project.nomoredomains.monster',
+];
+app.use((req, res, next) => {
+  const { origin } = req.headers;
+  const { method } = req;
+  const requestHeaders = req.headers['access-control-request-headers'];
+  const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
+  if (allowedCors.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+    res.header('Access-Control-Allow-Credentials', true);
+  }
+
+  if (method === 'OPTIONS') {
+    res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
+    res.header('Access-Control-Allow-Headers', requestHeaders);
+    res.end();
+    return;
+  }
+  next();
+});
 const { PORT = 3000 } = process.env;
 
 app.use(bodyParser.json());
