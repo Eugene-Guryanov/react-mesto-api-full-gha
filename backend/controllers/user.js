@@ -114,6 +114,6 @@ module.exports.getMe = (req, res) => {
     .catch((err) => res.send(err));
 };
 
-module.exports.logout = (req, res) => {
-  res.clearCookie('jwt', { secure: 'true', sameSite: 'none' }).send();
-};
+// module.exports.logout = (req, res) => {
+//   res.clearCookie('jwt', { secure: 'true', sameSite: 'none' }).send();
+// };

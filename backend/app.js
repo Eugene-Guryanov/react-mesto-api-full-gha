@@ -5,12 +5,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
-// const cors = require('cors');
+const cors = require('cors');
 require('dotenv').config();
 const mongoose = require('mongoose');
 const userRouter = require('./routes/users');
 const cardRouter = require('./routes/cards');
-const { loginValidation, userValidation, logout } = require('./middlewares/validation');
+const { loginValidation, userValidation } = require('./middlewares/validation');
 // eslint-disable-next-line import/no-unresolved, import/extensions
 const { login, createUser } = require('./controllers/user');
 const { auth } = require('./middlewares/auth');
@@ -18,7 +18,7 @@ const NotFoundError = require('./errors/NotFoundError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const app = express();
-// app.use(cors({ origin: ['http://localhost:3000', 'https://localhost:3000', 'https://project.nomoredomains.monster'], credentials: true, maxAge: 3600 }));
+app.use(cors({ origin: ['http://localhost:3000', 'https://localhost:3000', 'https://project.nomoredomains.monster'], credentials: true, maxAge: 3600 }));
 const { PORT = 3000 } = process.env;
 
 const allowedCors = [
@@ -65,7 +65,7 @@ app.get('/crash-test', () => {
 
 app.post('/signin', loginValidation, login);
 app.post('/signup', userValidation, createUser);
-app.post('/logout', logout);
+// app.post('/logout', logout);
 app.use('/', auth, userRouter);
 app.use('/', auth, cardRouter);
 
