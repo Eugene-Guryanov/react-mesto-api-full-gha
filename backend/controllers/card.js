@@ -9,7 +9,7 @@ module.exports.createCard = (req, res, next) => {
   const { name, link } = req.body;
 
   Card.create({ name, link, owner })
-    .then((card) => res.send({ data: card }))
+    .then((card) => res.send(card))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequestError('Ошибка валидации'));
@@ -53,7 +53,7 @@ module.exports.likeCard = (req, res, next) => {
   )
     .populate('owner')
     .orFail(() => { throw new NotFoundError('Карточка с таким id не найдена'); })
-    .then((likes) => res.send({ data: likes }))
+    .then((likes) => res.send(likes))
     .catch((err) => {
       if (err.name === 'CastError') {
         next(new BadRequestError('Переданы некоректные данные лайка'));
@@ -70,7 +70,7 @@ module.exports.dislikeCard = (req, res, next) => {
     { new: true },
   )
     .orFail(() => { throw new NotFoundError('Карточка с таким id не найдена'); })
-    .then((likes) => res.send({ data: likes }))
+    .then((likes) => res.send(likes))
     .catch((err) => {
       if (err.name === 'CastError') {
         next(new BadRequestError('Переданы некоректные данные дизлайка'));
