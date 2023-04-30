@@ -5,11 +5,9 @@ const NotFoundError = require('../errors/NotFoundError');
 const ForbiddenError = require('../errors/ForbiddenError');
 
 module.exports.createCard = (req, res, next) => {
-  const owner = req.user._id;
   const { name, link } = req.body;
 
-  Card.create({ name, link, owner })
-    .populate(['likes', 'owner'])
+  Card.create({ name, link, owner: req.user })
     .then((card) => res.send(card))
     .catch((err) => {
       if (err.name === 'ValidationError') {
