@@ -8,7 +8,15 @@ module.exports.createCard = (req, res, next) => {
   const { name, link } = req.body;
 
   Card.create({
-    name, link, owner: req.user, likes: [],
+    name,
+    link,
+    owner:
+    {
+      name: req.user.name,
+      about: req.user.avatar,
+      _id: req.user._id,
+    },
+    likes: [],
   })
     .then((card) => res.send(card))
     .catch((err) => {
