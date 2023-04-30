@@ -10,7 +10,7 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const userRouter = require('./routes/users');
 const cardRouter = require('./routes/cards');
-const { loginValidation, userValidation } = require('./middlewares/validation');
+const { loginValidation, userValidation, logout } = require('./middlewares/validation');
 // eslint-disable-next-line import/no-unresolved, import/extensions
 const { login, createUser } = require('./controllers/user');
 const { auth } = require('./middlewares/auth');
@@ -34,6 +34,7 @@ app.get('/crash-test', () => {
 
 app.post('/signin', loginValidation, login);
 app.post('/signup', userValidation, createUser);
+app.post('/logout', logout);
 app.use('/', auth, userRouter);
 app.use('/', auth, cardRouter);
 

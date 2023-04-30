@@ -101,6 +101,7 @@ module.exports.login = (req, res, next) => {
         maxAge: 3600000 * 7 * 24,
         httpOnly: true,
         sameSite: true, // добавили опцию
+        secure: 'true',
       })
         .send(user.toJSON());
     })
@@ -111,4 +112,8 @@ module.exports.getMe = (req, res) => {
   User.findById(req.user._id)
     .then((currentUser) => res.send(currentUser))
     .catch((err) => res.send(err));
+};
+
+module.exports.logout = (req, res) => {
+  res.clearCookie('jwt', { secure: 'true', sameSite: 'none' }).send();
 };
