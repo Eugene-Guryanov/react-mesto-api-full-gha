@@ -19,10 +19,10 @@ module.exports.createCard = (req, res, next) => {
     });
 };
 
-module.exports.getCard = (req, res, next) => {
+module.exports.getCards = (req, res, next) => {
   Card.find({})
     .populate('owner')
-    .then((card) => res.send(card))
+    .then((cards) => res.send(cards))
     .catch(next);
 };
 
