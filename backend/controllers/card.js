@@ -53,7 +53,7 @@ module.exports.likeCard = (req, res, next) => {
   )
     .populate('owner')
     .orFail(() => { throw new NotFoundError('Карточка с таким id не найдена'); })
-    .then((likes) => res.send(likes))
+    .then((likes) => res.send({ data: likes }))
     .catch((err) => {
       if (err.name === 'CastError') {
         next(new BadRequestError('Переданы некоректные данные лайка'));
@@ -70,7 +70,7 @@ module.exports.dislikeCard = (req, res, next) => {
     { new: true },
   )
     .orFail(() => { throw new NotFoundError('Карточка с таким id не найдена'); })
-    .then((likes) => res.send(likes))
+    .then((likes) => res.send({ data: likes }))
     .catch((err) => {
       if (err.name === 'CastError') {
         next(new BadRequestError('Переданы некоректные данные дизлайка'));
