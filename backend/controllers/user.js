@@ -96,14 +96,6 @@ module.exports.login = (req, res, next) => {
     .then((user) => {
       // аутентификация успешна
       const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret');
-
-      // res.cookie('jwt', token, {
-      // maxAge: 3600000 * 7 * 24,
-      // httpOnly: true,
-      // sameSite: true, // добавили опцию
-      // secure: 'true',
-      // })
-      // .send(user.toJSON());
       res.status(200).send({ token });
     })
     .catch(next);
@@ -114,7 +106,3 @@ module.exports.getMe = (req, res) => {
     .then((currentUser) => res.send(currentUser))
     .catch((err) => res.send(err));
 };
-
-// module.exports.logout = (req, res) => {
-//   res.clearCookie('jwt', { secure: 'true', sameSite: 'none' }).send();
-// };

@@ -11,7 +11,7 @@ module.exports.auth = (req, res, next) => {
 
   if (!authorization.startsWith('Bearer')) {
     return next(new AuthError(
-      'Необходима авторизацияZ!',
+      'Необходима авторизация!',
     ));
   }
 

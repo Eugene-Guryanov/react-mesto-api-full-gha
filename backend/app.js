@@ -35,7 +35,6 @@ app.get('/crash-test', () => {
 
 app.post('/signin', loginValidation, login);
 app.post('/signup', userValidation, createUser);
-// app.post('/logout', logout);
 app.use('/', auth, userRouter);
 app.use('/', auth, cardRouter);
 
